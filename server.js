@@ -9,11 +9,15 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use('/users', usersRouter);
+app.use('/products', productsRoouter);
+app.use('/cart', cartRouter);
 
 
 app.get('/', (req,res)=>{
   res.send('smoke test')
 });
+
 
 
 
