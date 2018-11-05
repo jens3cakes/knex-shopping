@@ -17,9 +17,9 @@ console.log(products);
 router.post('/', (req, res)=>{
   const data = req.body;
   //const {username, email} = req.body; interchangable with line17
-  const optionsArray = [data.title, data.description, data.inventory, data.price, data.created_at, data.updated_at];
+  const optionsArray = [data.title, data.description, data.inventory, data.price];
   console.log(optionsArray);
-  db.raw('INSERT INTO products (title, description, inventory, price, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?) RETURNING *', optionsArray)
+  db.raw('INSERT INTO products (title, description, inventory, price) VALUES (?, ?, ?, ?) RETURNING *', optionsArray)
   .then((newProduct)=>{
   if(!newProduct.rowCount){
     res.status(400).send('Failed to create new user');
